@@ -58,16 +58,22 @@ def create_tfidf_clf(df_tweets, ngram = (2,3)):
     
     return clf, count_vect
                 
-                     
-def predict_tfidf_clf(path, clf, count_vect, output_name):
+def test_dataset_to_df(path):
+    """
+    Opens the .txt file and returns a dataframe that keeps the correct id
+    """
+    df = pd.read_csv(path, sep="\n", header=None)
+    df.columns = ["tweet"]
+    df.index += 1 #index starting at 1 instead of 0 -> need that to keep the correct id of each tweet
+    df['tweet'] = df['tweet'].apply(lambda x : str(x).split(',', maxsplit=1)[1]) #remove the first number in the each entry of the df
+    #df= pd.DataFrame({'tweet' : df['tweet']}) #create the dataframe
+    return df
+
+def predict_tfidf_clf(df_to_predict, clf, count_vect, output_name):
     """
     Compute the predictions for the .txt file from path based on the given clf and count vector and outputs the csv file to submit on Kaggle
     """
-    df_unknown = pd.read_csv('data/test_data.txt', sep="\n", header=None)
-    df_unknown.columns = ["tweet"]
-    df_unknown.index += 1 
-    df_unknown = df_unknown.apply(lambda x : str(x).split(',', maxsplit=1)[1],axis=1)
-    df_unknown = clf.predict(count_vect.transform(df_unknown.values))
+    df_unknown = clf.predict(count_vect.transform(df_to_predict.values))
     df_unknown[df_unknown == 0] = -1 #replace 0 to -1
     create_csv_submission([x for x in range(1,len(df_unknown)+1)],df_unknown,output_name)
     
