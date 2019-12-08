@@ -1,7 +1,12 @@
 Log of all the submissions on Kaggle:
 
-Sun, 8 Dec 2019, 12:19:53 : preprocessed with just lowercase, stopwords and punctations
+Sun, 8 Dec 2019, 12:19:53 : preprocessed with just lowercase, stopwords and punctuations
                             ngrame_range = (1,1)
                             ACCURACY : 0.722
                             Remarks : I forgot to preprocessed the test dataset #facepalm
+                      
+                      
+Sun, 8 Dec 2019, 15:57:55:  preprocessed with just lowercase, stopwords and punctuations
+                            ngrame_range = (1,1)
+                            ACCURACY : 0.761
         

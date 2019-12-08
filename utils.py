@@ -73,7 +73,7 @@ def predict_tfidf_clf(df_to_predict, clf, count_vect, output_name):
     """
     Compute the predictions for the .txt file from path based on the given clf and count vector and outputs the csv file to submit on Kaggle
     """
-    df_unknown = clf.predict(count_vect.transform(df_to_predict.values))
+    df_unknown = clf.predict(count_vect.transform(df_to_predict['tweet']))
     df_unknown[df_unknown == 0] = -1 #replace 0 to -1
     create_csv_submission([x for x in range(1,len(df_unknown)+1)],df_unknown,output_name)
     
