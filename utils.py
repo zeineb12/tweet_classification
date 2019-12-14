@@ -16,14 +16,15 @@ def open_by_tweets(path,sep="<user>"):
         train_pos = file.read().replace('\n','').split(sep)
     return train_pos
 
-def create_csv_submission(ids, y_pred, name):
+def create_csv_submission(y_pred, path):
     """
     Creates an output file in csv format for submission to kaggle
     Arguments: ids (event ids associated with each prediction)
                y_pred (predicted class labels)
-               name (string name of .csv output file to be created)
+               path (string name of .csv output file to be created)
     """
-    with open(name, 'w', newline='') as csvfile:
+    ids=[i for i in range(1,len(y_pred)+1)]
+    with open(path, 'w', newline='') as csvfile:
         fieldnames = ['Id', 'Prediction']
         writer = csv.DictWriter(csvfile, delimiter=",", fieldnames=fieldnames)
         writer.writeheader()
