@@ -17,3 +17,7 @@ Fri, 13 Dec 2019, 00:37:46: almost complete preprocessing
 
 Fri, 13 Dec 2019, 01:17:47: added lemmatization
                             nothing changes at all
+
+Sun, 15 Dec 2019, 13:21:46: gru model with training features changed from 100'000 to 120'000 and
+			    batch size to 1000 and validation split to 0.05 and 100 to 140 for max_len
+			    ACCURACY : 0.852			
