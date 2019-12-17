@@ -13,7 +13,7 @@ To obtain the same results than us, you need to download the following files fro
 In order to run the project, you need the following librairies installed:
 
 - `scikit-learn`
-- `keras`
+- `keras` with backend `tensorflow` installed and configured
 - `nltk`
 - `gensim`
 - `globe`
