@@ -72,16 +72,11 @@ def build_rnn_lstm(X_train,y_train,X_test,y_test,vocab_size,embedding_matrix,max
         Embedding(vocab_size, 200, weights=[embedding_matrix], input_length=maxlen,
                   trainable=False,
                   mask_zero=True))
-    # Masking layer for pre-trained embeddings
-    model.add(Masking(mask_value=0.0))
-    # Recurrent layer
+    model.add(Masking(mask_value=0.0)) #need masking layer to not train on padding
     model.add(LSTM(64, return_sequences=False, 
                    dropout=0.1, recurrent_dropout=0.1))
-    # Fully connected layer
     model.add(Dense(64, activation='relu'))
-    # Dropout for regularization
     model.add(Dropout(0.5))
-    # Output layer
     model.add(Dense(1))
     model.add(Activation('sigmoid'))
 
