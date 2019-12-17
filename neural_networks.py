@@ -11,7 +11,7 @@ from numpy import array
 from keras.preprocessing.text import one_hot
 from keras.preprocessing.sequence import pad_sequences
 from keras.models import Sequential
-from keras.layers.core import Activation, Dropout, Dense
+from keras.layers.core import Activation, Dropout, Dense, Masking
 from keras.layers import Flatten
 from keras.layers import GlobalMaxPooling1D,MaxPooling1D,GRU
 from keras.layers import Conv1D
