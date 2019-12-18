@@ -20,7 +20,11 @@ from keras.layers.embeddings import Embedding
 from sklearn.model_selection import train_test_split
 from keras.preprocessing.text import Tokenizer
 
-
+batch_size = 1024
+dim = 200
+epochs = 6
+validation_split = 0.05
+verbose = 1
 
 
 def build_simple_nn(X_train,y_train,X_test,y_test,vocab_size,embedding_matrix,maxlen):
@@ -39,16 +43,16 @@ def build_simple_nn(X_train,y_train,X_test,y_test,vocab_size,embedding_matrix,ma
     """
     #Create model
     model = Sequential()
-    embedding_layer = Embedding(vocab_size, 200, weights=[embedding_matrix], input_length=maxlen , trainable=False) #trainable set to False bc we use the downloaded dict
+    embedding_layer = Embedding(vocab_size, dim, weights=[embedding_matrix], input_length=maxlen , trainable=False) #trainable set to False bc we use the downloaded dict
     model.add(embedding_layer)
     model.add(Flatten())
     model.add(Dense(1, activation='sigmoid'))
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['acc'])
     
     #Fit model
-    model.fit(X_train, y_train, batch_size=32, epochs=6, verbose=1, validation_split=0.2)
+    model.fit(X_train, y_train, batch_size, epochs, verbose, validation_split)
     
-    score = model.evaluate(X_test, y_test, verbose=1)
+    score = model.evaluate(X_test, y_test, verbose)
     print("Test Score:", score[0])
     print("Test Accuracy:", score[1])
     return model
@@ -69,7 +73,7 @@ def build_rnn_lstm(X_train,y_train,X_test,y_test,vocab_size,embedding_matrix,max
     """
     model = Sequential()
     model.add(
-        Embedding(vocab_size, 200, weights=[embedding_matrix], input_length=maxlen,
+        Embedding(vocab_size, dim, weights=[embedding_matrix], input_length=maxlen,
                   trainable=False,
                   mask_zero=True))
     model.add(Masking(mask_value=0.0)) #need masking layer to not train on padding
@@ -84,15 +88,9 @@ def build_rnn_lstm(X_train,y_train,X_test,y_test,vocab_size,embedding_matrix,max
     model.compile(
         optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
     print(model.summary())
-    model.fit(X_train, y_train, batch_size=1200, callbacks=[
-                         ModelCheckpoint(
-                             filepath='./RNN_lstm_best_weights.hdf5',
-                             monitor='val_acc',
-                             verbose=1,
-                             save_best_only=True,
-                             mode='max')], epochs=6, verbose=1, validation_split=0.05)
+    model.fit(X_train, y_train, batch_size, epochs, verbose, validation_split)
 
-    score = model.evaluate(X_test, y_test, verbose=1)
+    score = model.evaluate(X_test, y_test, verbose)
     print("Test Score:", score[0])
     print("Test Accuracy:", score[1])
     return model
@@ -112,7 +110,7 @@ def build_rnn_bi_lstm(X_train,y_train,X_test,y_test,vocab_size,embedding_matrix,
         Returns the model trained and the history of the training
     """
     model = Sequential()
-    model.add(Embedding(vocab_size, 200, weights=[embedding_matrix], input_length=maxlen , trainable=False))
+    model.add(Embedding(vocab_size, dim, weights=[embedding_matrix], input_length=maxlen , trainable=False))
     model.add(Bidirectional(LSTM(64)))
     model.add(Dropout(0.5))
     model.add(Dense(1, activation='sigmoid'))
@@ -121,15 +119,9 @@ def build_rnn_bi_lstm(X_train,y_train,X_test,y_test,vocab_size,embedding_matrix,
         optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
     print(model.summary())
     
-    model.fit(X_train, y_train, batch_size=32, callbacks=[
-                         ModelCheckpoint(
-                             filepath='./RNN_bi_lstm_best_weights.hdf5',
-                             monitor='val_acc',
-                             verbose=1,
-                             save_best_only=True,
-                             mode='max')], epochs=6, verbose=1, validation_split=0.05)
+    model.fit(X_train, y_train, batch_size, epochs, verbose, validation_split)
 
-    score = model.evaluate(X_test, y_test, verbose=1)
+    score = model.evaluate(X_test, y_test, verbose)
     print("Test Score:", score[0])
     print("Test Accuracy:", score[1])
     return model
@@ -152,7 +144,7 @@ def build_rnn_gru(X_train,y_train,X_test,y_test,vocab_size,embedding_matrix,maxl
         Returns the model trained and the history of the training
     """
     model = Sequential()
-    embedding_layer = Embedding(vocab_size, 200, weights=[embedding_matrix], input_length=maxlen , trainable=False)
+    embedding_layer = Embedding(vocab_size, dim, weights=[embedding_matrix], input_length=maxlen , trainable=False)
     model.add(embedding_layer)
     model.add(GRU(128, return_sequences=True))
     model.add(Dropout(0.3))
@@ -163,15 +155,9 @@ def build_rnn_gru(X_train,y_train,X_test,y_test,vocab_size,embedding_matrix,maxl
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['acc'])
     print(model.summary())
     
-    model.fit(X_train, y_train, batch_size=1200, callbacks=[
-                         ModelCheckpoint(
-                             filepath='./rnn_gru.hdf5',
-                             monitor='val_acc',
-                             verbose=1,
-                             save_best_only=True,
-                             mode='max')], epochs=6, verbose=1, validation_split=0.05)
+    model.fit(X_train, y_train, batch_size, epochs, verbose, validation_split)
 
-    score = model.evaluate(X_test, y_test, verbose=1)
+    score = model.evaluate(X_test, y_test, verbose)
     print("Test Score:", score[0])
     print("Test Accuracy:", score[1])
     return model
@@ -194,7 +180,7 @@ def build_cnn(X_train,y_train,X_test,y_test,vocab_size,embedding_matrix,maxlen):
     kernel_size = 3
 
     model = Sequential()
-    model.add(Embedding(vocab_size, 200, weights=[embedding_matrix], input_length=maxlen))
+    model.add(Embedding(vocab_size, dim, weights=[embedding_matrix], input_length=maxlen))
     model.add(Dropout(0.25))
     model.add(Conv1D(filters, kernel_size, padding='valid', activation='relu', strides=1))
     model.add(Conv1D(300, kernel_size, padding='valid', activation='relu', strides=1))
@@ -208,15 +194,9 @@ def build_cnn(X_train,y_train,X_test,y_test,vocab_size,embedding_matrix,maxlen):
     model.add(Activation('sigmoid'))
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
     print(model.summary())
-    model.fit(X_train, y_train, batch_size=1200, callbacks=[
-                         ModelCheckpoint(
-                             filepath='./CNN_best_weights.hdf5',
-                             monitor='val_acc',
-                             verbose=1,
-                             save_best_only=True,
-                             mode='max')], epochs=6, verbose=1, validation_split=0.05)
+    model.fit(X_train, y_train, batch_size, epochs, verbose, validation_split)
 
-    score = model.evaluate(X_test, y_test, verbose=1)
+    score = model.evaluate(X_test, y_test, verbose)
     print("Test Score:", score[0])
     print("Test Accuracy:", score[1])
     return model
