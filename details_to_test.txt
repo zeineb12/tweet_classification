@@ -1,5 +1,0 @@
-The parameters can be changed to test if they are important or not (when testing):
-
-- punctuations and which symbols to drop
-- hashtag processing: search known methods & we can segment hashtags that are formatted in CamelCase
-- 
