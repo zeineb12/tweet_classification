@@ -32,7 +32,7 @@ embedding_matrix_40 = create_embedding_matrix(vocab_size, tokenizer_40)
 #Train and run first model + prediction on unknown set
 #4-convolutional neural net
 model_1 = cnn(X_train_40, y_train,X_test_40,y_test,vocab_size,embedding_matrix_40, MAXLEN_40,first_dropout = 0.40)
-preds_1 = compute_predictions_nn(to_predict = unknown, threshold = 0.51, model = model_1, tokenizer = tokenizer_40,maxlen=MAXLEN_140)
+preds_1 = compute_predictions_nn(to_predict = unknown, threshold = 0.51, model = model_1, tokenizer = tokenizer_40,maxlen=MAXLEN_40)
 create_csv_submission(preds_1, "./ensemble/model1_pred.csv")
 
 #Train and run 2nd model + prediction on unknown set
