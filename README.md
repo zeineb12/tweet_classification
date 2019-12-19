@@ -23,6 +23,7 @@ To obtain the same results than us, you need to download the following files fro
 
 **Make sure to have the above files in a directory called data to be able to run the scripts**
 
+
 ## Library requirements
 In order to run the project, you need the following librairies installed:
 
@@ -75,6 +76,8 @@ You should run this file as follows: ```$ python ml_models.py model_name``` wher
 ## Reproducibility
 
 To obtain the same predictions we used for the AIcrowd submission, run the python script `run.py` . It will produce a file `output_ensemble_final.csv` that can be submitted on the web page of the challenge.
+
+**Make sure you have an empty directory called ensemble to run the scripts**
 
 
 ## Remarks
