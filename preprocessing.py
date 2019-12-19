@@ -152,15 +152,15 @@ def tweet_cleaner(tweet):
 def train_test_cleaner():
 	"""Clean train set and test set and return cleaned dataframes"""
 	#Read positive tweets train file
-	with open('data/train_pos_full.txt',"r") as file:
+	with open('data/train_pos_full.txt',"r",encoding="utf8") as file:
 		train_pos = file.read().split('\n')
 	train_pos = pd.DataFrame({'tweet' : train_pos})[:len(train_pos)-1]
 	#Read negative tweets train file
-	with open('data/train_neg_full.txt',"r") as file:
+	with open('data/train_neg_full.txt',"r",encoding="utf8") as file:
 		train_neg = file.read().split('\n')
 	train_neg = pd.DataFrame({'tweet' : train_neg})[:len(train_neg)-1]
 	#Read test tweets file
-	with open('data/test_data.txt',"r") as file:
+	with open('data/test_data.txt',"r",encoding="utf8") as file:
 		df_unknown = file.read().split('\n')
 	df_unknown = pd.DataFrame({'tweet' : df_unknown})[:len(df_unknown)-1]
 	df_unknown.index += 1 
