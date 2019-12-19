@@ -21,8 +21,8 @@ X_train, X_test, y_train, y_test = train_test_split(train_set['tweet'], train_se
 
 X_train, X_test, y_train, y_test = X_train, X_test, y_train, y_test
 #prepare input for neural nets
-X_train_140,X_test_140, vocab_size_140, tokenizer_140 = tok_and_pad_for_nn(X_train, X_test, MAXLEN_140, NUM_WORD)
-X_train_40,X_test_40, vocab_size_40, tokenizer_40 = tok_and_pad_for_nn(X_train, X_test, MAXLEN_40, NUM_WORD)
+X_train_140,X_test_140, vocab_size, tokenizer_140 = tok_and_pad_for_nn(X_train, X_test, MAXLEN_140, NUM_WORD)
+X_train_40,X_test_40, vocab_size, tokenizer_40 = tok_and_pad_for_nn(X_train, X_test, MAXLEN_40, NUM_WORD)
 
 #create embedding matrix from our word2vec model
 embedding_matrix = create_embedding_matrix(vocab_size, tokenizer)
