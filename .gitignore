@@ -2,4 +2,3 @@ data/
 script/
 .ipynb_checkpoints
 __pycache__/
-w2v_full_w200_min4.txt
