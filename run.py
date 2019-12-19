@@ -4,7 +4,8 @@ from neural_networks import *
 from embeddings import *
 from ensemble import *
 
-MAXLEN = 140
+MAXLEN_140 = 140
+MAXLEN_40 = 40
 NUM_WORD = 120000
 
 #load and clean the dataset
@@ -27,18 +28,21 @@ embedding_matrix = create_embedding_matrix(vocab_size, tokenizer)
 
 
 #Train and run first model + prediction on unknown set
-model_1 = cnn(X_train, y_train,X_test,y_test,vocab_size,embedding_matrix, MAXLEN,first_dropout = 0.40)
-preds_1 = compute_predictions_nn(to_predict = unknown, threshold = 0.5, model = model_1, tokenizer = tokenizer,maxlen=MAXLEN)
+#4-convolutional neural net
+model_1 = cnn(X_train, y_train,X_test,y_test,vocab_size,embedding_matrix, MAXLEN_40,first_dropout = 0.40)
+preds_1 = compute_predictions_nn(to_predict = unknown, threshold = 0.5, model = model_1, tokenizer = tokenizer,maxlen=MAXLEN_140)
 create_csv_submission(preds_1, "./ensemble/model1_pred.csv")
 
 #Train and run 2nd model + prediction on unknown set
-model_2 = cnn(X_train, y_train,X_test,y_test,vocab_size,embedding_matrix, MAXLEN,first_dropout = 0.25)
-preds_2 = compute_predictions_nn(to_predict = unknown, threshold = 0.5, model = model_2, tokenizer = tokenizer,maxlen=MAXLEN)
+#4-convolutional neural net
+model_2 = cnn(X_train, y_train,X_test,y_test,vocab_size,embedding_matrix, MAXLEN_140,first_dropout = 0.25)
+preds_2 = compute_predictions_nn(to_predict = unknown, threshold = 0.5, model = model_2, tokenizer = tokenizer,maxlen=MAXLEN_140)
 create_csv_submission(preds_2, "./ensemble/model2_pred.csv")
 
 #Train and run 3rd model + prediction on unknown set
-model_3 = rnn_bilstm(X_train, y_train,X_test,y_test,vocab_size,embedding_matrix, MAXLEN)
-preds_3 = compute_predictions_nn(to_predict = unknown, threshold = 0.5, model = model_3, tokenizer = tokenizer,maxlen=MAXLEN)
+#recurrent neural network with bidirection long-short term memory
+model_3 = rnn_bilstm(X_train, y_train,X_test,y_test,vocab_size,embedding_matrix, MAXLEN_140)
+preds_3 = compute_predictions_nn(to_predict = unknown, threshold = 0.5, model = model_3, tokenizer = tokenizer,maxlen=MAXLEN_140)
 create_csv_submission(preds_3, "./ensemble/model3_pred.csv")
 
 #majority voting over the predictions of the 3 model, outputs the cvs file 'output_ensemble_final.csv'
