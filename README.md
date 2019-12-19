@@ -43,8 +43,8 @@ In order to run the project, you need the following librairies installed:
 
 - `neural_networks.py` : contains the following neural nets algo:
 	- **simple neural net**
-	- **recurrent neural net with long-short term memory **
-	- **recurrent neural net with bidirectional long-short term memory **
+	- **recurrent neural net with long-short term memory**
+	- **recurrent neural net with bidirectional long-short term memory**
 	- **recurrent neural net with gated recurrent unit**
 	- **convolutional neural network**
 	It also contains a method that gives the prediction for the labels of the test dataset
