@@ -8,8 +8,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from nltk.stem import WordNetLemmatizer 
 from sklearn import metrics
-#from utils import open_by_tweets
-from utils import create_csv_submission
 SEED = 15432
 
 
@@ -154,11 +152,11 @@ def tweet_cleaner(tweet):
 def train_test_cleaner():
 	"""Clean train set and test set and return cleaned dataframes"""
 	#Read positive tweets train file
-	with open('data/train_pos.txt',"r") as file:
+	with open('data/train_pos_full.txt',"r") as file:
 		train_pos = file.read().split('\n')
 	train_pos = pd.DataFrame({'tweet' : train_pos})[:len(train_pos)-1]
 	#Read negative tweets train file
-	with open('data/train_neg.txt',"r") as file:
+	with open('data/train_neg_full.txt',"r") as file:
 		train_neg = file.read().split('\n')
 	train_neg = pd.DataFrame({'tweet' : train_neg})[:len(train_neg)-1]
 	#Read test tweets file
@@ -181,8 +179,6 @@ def train_test_cleaner():
 	train_set['tweet'] = train_set['tweet'].apply(tweet_cleaner)
 	df_unknown['tweet'] = df_unknown['tweet'].apply(tweet_cleaner)
 	
-	#Shuffle the order of the entries of the train set (to mix the labels)
-	train_set = train_set.sample(frac=1, random_state=1).reset_index(drop=True)
 	return train_set,df_unknown
 
 	
