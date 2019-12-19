@@ -43,7 +43,7 @@ create_csv_submission(preds_2, "./ensemble/model2_pred.csv")
 
 #Train and run 3rd model + prediction on unknown set
 #recurrent neural network with bidirection long-short term memory
-model_3 = rnn_bilstm(X_train_140, y_train,X_test_140,y_test,vocab_size,embedding_matrix_140, MAXLEN_140)
+model_3 = rnn_bi_lstm(X_train_140, y_train,X_test_140,y_test,vocab_size,embedding_matrix_140, MAXLEN_140)
 preds_3 = compute_predictions_nn(to_predict = unknown, threshold = 0.5, model = model_3, tokenizer = tokenizer_140,maxlen=MAXLEN_140)
 create_csv_submission(preds_3, "./ensemble/model3_pred.csv")
 
