@@ -42,11 +42,12 @@ In order to run the project, you need the following librairies installed:
 - `preprocessing.py`: contains the required methods to clean the training set and the test set
 
 - `neural_networks.py` : contains the following neural nets algo:
-	- simple neural net
-	- recurrent neural net with long-short term memory 
-	- recurrent neural net with bidirectional long-short term memory 
-	- recurrent neural net with gated recurrent unit
-	- convolutional neural network
+	- **simple neural net**
+	- **recurrent neural net with long-short term memory **
+	- **recurrent neural net with bidirectional long-short term memory **
+	- **recurrent neural net with gated recurrent unit**
+	- **convolutional neural network**
+	It also contains a method that gives the prediction for the labels of the test dataset
     
 - `ml_models.py` : trains and validates our classifiers and prints their accuracy on the validation set.
 You should run this file as follows: ```$ python ml_models.py model_name``` where `model_name` can be one of the following:
@@ -72,9 +73,10 @@ You should run this file as follows: ```$ python ml_models.py model_name``` wher
 
 ## Reproducibility
 
-To obtain the same predictions we used for the AIcrowd submission, run the python script `run.py` . It will produce a file `submissions.csv` that can be submitted on the web page of the challenge.
+To obtain the same predictions we used for the AIcrowd submission, run the python script `run.py` . It will produce a file `output_ensemble_final.csv` that can be submitted on the web page of the challenge.
 
 
 ## Remarks
 - It will take a long time to run (few hours) because it pre-processes the dataset, then creates word2vec embedding vectors, and then run different neural network models.
 - To speed up the neural network training, we used colab : [https://colab.research.google.com/notebooks/welcome.ipynb](https://colab.research.google.com/notebooks/welcome.ipynb)
+- When running the script run.py, the vectors of a word2vec model will be saved in your directory. Since we run 3 models, we will have a prediction csv file for each of the model that will be saved in the folder `ensemble` (the first model will overwrite the file that is already there).
