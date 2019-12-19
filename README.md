@@ -1,6 +1,16 @@
 # ML_Project2 : Twitter Sentiment Analysis
 
-This project was part of the course Machine Learning at EPFL. It was part of a challenge hosted on AIcrowd ( [https://www.aicrowd.com/challenges/epfl-ml-text-classification-2019](https://www.aicrowd.com/challenges/epfl-ml-text-classification-2019 )  ) . Given two datasets (one with negative tweets and the other with positive tweets) we had to apply machine learning techniques to predict the sentiments of test dataset.
+## Team members
+
+Sarah Antille: zeineb.sahnoun@epfl.ch
+
+Lilia Ellouz: lilia.ellouz@epfl.ch   
+
+Zeineb Sahnoun  zeineb.sahnoun@epfl.ch
+
+## Introduction
+
+This project is part of the course Machine Learning at EPFL. It is part of a challenge hosted on AIcrowd ( [https://www.aicrowd.com/challenges/epfl-ml-text-classification-2019](https://www.aicrowd.com/challenges/epfl-ml-text-classification-2019 )  ) . Given two datasets (one with negative tweets and the other with positive tweets) we had to apply machine learning techniques to predict the sentiments of the test dataset.
 
 ## Dataset Information
 To obtain the same results than us, you need to download the following files from [https://www.aicrowd.com/challenges/epfl-ml-text-classification-2019/dataset_files](https://www.aicrowd.com/challenges/epfl-ml-text-classification-2019/dataset_files)  :
@@ -26,40 +36,42 @@ In order to run the project, you need the following librairies installed:
 
 ## Files
 - `run.py` : creates the .csv file used in our best prediction on AIcrowd
+
 - `preprocessing.py`: contains the required methods to clean the training set and the test set
+
 - `neural_networks.py` : contains the following neural nets algo:
 	- simple neural net
 	- recurrent neural net with long-short term memory 
 	- recurrent neural net with bidirectional long-short term memory 
 	- recurrent neural net with gated recurrent unit
 	- convolutional neural network
+    
 - `ml_models.py` : trains and validates our classifiers and prints their accuracy on the validation set.
-You should call this file as follows: ```$ python ml_models.py 'model_name'``` where 'model_name' can be one of the following:
+\\You should run this file as follows: ```$ python ml_models.py 'model_name'``` 
+\\where 'model_name' can be one of the following:
 	- baseline: for a Naive Bayes classifier that uses Count Vectorization
 	- bayes: for a Naive Bayes classifier with hinge loss that uses TF-IDF Vectorization
 	- sgd: for a [Stochastic Gradient Descent Classifier](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDClassifier.html) that uses TF-IDF Vectorization
 	- svm: for a [Support Vector Classification](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html) that uses TF-IDF Vectorization
 	- logistic: for a regularized logistic regression that uses TF-IDF Vectorization
+    
 - `create_embeddings.py` : creates word2vec vectors from the dataset
+
 - `ensemble.py` : computes the majority voting of the predictions of 3 different models
+
 - `utils.py`
-- `Rapport_ML_2.pdf` : 4 pages report explaining 
 
+- `Rapport_ML_2.pdf` : 4 pages report explaining our approach and trials an errors
 
-## Team members
-
-Sarah Antille
-Lilia Ellouz
-Zeineb Sahnoun
 
 ## Result:
-- ?? % accuracy of prediction
+- 0.880 accuracy on AIcrowd where we are ranked 8th among all the groups.
 
 
 
 ## Run
 
-To obtain the same predictions than us, run the python script `run.py` . It will produce a file `submissions.csv` that can be submitted on the web page of the challenge
+To obtain the same predictions we used for the AIcrowd submission, run the python script `run.py` . It will produce a file `submissions.csv` that can be submitted on the web page of the challenge.
 
 
 ## Remarks
