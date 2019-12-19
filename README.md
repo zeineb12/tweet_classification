@@ -47,6 +47,7 @@ In order to run the project, you need the following librairies installed:
 	- **recurrent neural net with bidirectional long-short term memory**
 	- **recurrent neural net with gated recurrent unit**
 	- **convolutional neural network**
+	
 	It also contains a method that gives the prediction for the labels of the test dataset
     
 - `ml_models.py` : trains and validates our classifiers and prints their accuracy on the validation set.
