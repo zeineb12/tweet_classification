@@ -171,6 +171,9 @@ def cnn(X_train,y_train,X_test,y_test,vocab_size,embedding_matrix,maxlen,first_d
     return model
 
 def compute_predictions_nn(to_predict, threshold, model, tokenizer,maxlen):
+    """
+    Compute the predictions for a given dataset by using the trained model and threshold to map values to -1 or 1
+    """
     to_predict = to_predict['tweet']
     to_predict = to_predict.astype(str)
 
