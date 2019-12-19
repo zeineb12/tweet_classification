@@ -2,7 +2,7 @@
 
 ## Team members
 
-Sarah Antille: zeineb.sahnoun@epfl.ch
+Sarah Antille: sarah.antille@epfl.ch
 
 Lilia Ellouz: lilia.ellouz@epfl.ch   
 
