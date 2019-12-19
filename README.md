@@ -9,6 +9,8 @@ To obtain the same results than us, you need to download the following files fro
 - `train_neg_full.txt` (contains the negative tweets with the sad smiley removed)
 - `test_data.txt` (contains the tweets to predict)
 
+**Make sure to have the above files in a directory called data to be able to run the scripts**
+
 ## Library requirements
 In order to run the project, you need the following librairies installed:
 
@@ -23,14 +25,21 @@ In order to run the project, you need the following librairies installed:
 - `numpy`
 
 ## Files
-
-- `run.py`
+- `run.py` : creates the .csv file used in our best prediction on AIcrowd
+- `preprocessing.py`: contains the required methods to clean the training set and the test set
 - `neural_networks.py` : contains the following neural nets algo:
 	- simple neural net
 	- recurrent neural net with long-short term memory 
 	- recurrent neural net with bidirectional long-short term memory 
 	- recurrent neural net with gated recurrent unit
 	- convolutional neural network
+- `ml_models.py` : trains and validates our classifiers and prints their accuracy on the validation set.
+You should call this file as follows: ```$ python ml_models.py 'model_name'``` where 'model_name' can be one of the following:
+	- baseline: for a Naive Bayes classifier that uses Count Vectorization
+	- bayes: for a Naive Bayes classifier with hinge loss that uses TF-IDF Vectorization
+	- sgd: for a [Stochastic Gradient Descent Classifier](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDClassifier.html) that uses TF-IDF Vectorization
+	- svm: for a [Support Vector Classification](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html) that uses TF-IDF Vectorization
+	- logistic: for a regularized logistic regression that uses TF-IDF Vectorization
 - `create_embeddings.py` : creates word2vec vectors from the dataset
 - `ensemble.py` : computes the majority voting of the predictions of 3 different models
 - `utils.py`
