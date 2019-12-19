@@ -48,11 +48,11 @@ In order to run the project, you need the following librairies installed:
     
 - `ml_models.py` : trains and validates our classifiers and prints their accuracy on the validation set.
 You should run this file as follows: ```$ python ml_models.py model_name``` where `model_name` can be one of the following:
-	- baseline: for a [Naive Bayes classifier](https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html) that uses Count Vectorization
-	- bayes: for a [Naive Bayes classifier](https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html) with hinge loss that uses TF-IDF vectorization
+	- baseline: for a [Naive Bayes](https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html) classifier that uses Count Vectorization
+	- bayes: for a [Naive Bayes](https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html) classifier with hinge loss that uses TF-IDF vectorization
 	- sgd: for a [Stochastic Gradient Descent Classifier](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDClassifier.html)
-	- svm: for a [Support Vector Classification](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)
-	- logistic: for a [regularized logistic regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
+	- svm: for a [Support Vector Classifier](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)
+	- logistic: for a regularized [Logistic Regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) classifier which is our best performing model among this group.
     
 - `create_embeddings.py` : creates word2vec vectors from the dataset
 
