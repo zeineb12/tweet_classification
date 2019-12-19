@@ -16,6 +16,11 @@ def create_csv_submission(y_pred, path):
         writer.writeheader()
         for r1, r2 in zip(ids, y_pred):
             writer.writerow({'Id':int(r1),'Prediction':int(r2)})
+            
+            
+
+
+    
 
 
                 
