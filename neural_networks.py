@@ -67,7 +67,6 @@ def rnn_lstm(X_train,y_train,X_test,y_test,vocab_size,embedding_matrix,maxlen):
     model = Sequential()
     model.add(Embedding(vocab_size, DIM, weights=[embedding_matrix], input_length=maxlen,trainable=False, mask_zero=True))
     model.add(Masking(mask_value=0.0)) #need masking layer to not train on padding
-    model.add(Dropout(0.25))
     model.add(LSTM(64, return_sequences=False, dropout=0.1, recurrent_dropout=0.1))
     model.add(Dense(64, activation='relu'))
     model.add(Dropout(0.5))
@@ -93,10 +92,13 @@ def rnn_bi_lstm(X_train,y_train,X_test,y_test,vocab_size,embedding_matrix,maxlen
     """
     #Create model
     model = Sequential()
-    model.add(Embedding(vocab_size, DIM, weights=[embedding_matrix], input_length=maxlen , trainable=False))
+    model.add(Embedding(vocab_size, DIM, weights=[embedding_matrix], input_length=maxlen,trainable=False, mask_zero=True))
+    model.add(Masking(mask_value=0.0)) #need masking layer to not train on padding
     model.add(Bidirectional(LSTM(64)))
+    model.add(Dense(64, activation='relu'))
     model.add(Dropout(0.5))
-    model.add(Dense(1, activation='sigmoid'))
+    model.add(Dense(1))
+    model.add(Activation('sigmoid'))
     #compile model
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
     print(model.summary())
