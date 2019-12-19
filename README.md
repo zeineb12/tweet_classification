@@ -47,13 +47,12 @@ In order to run the project, you need the following librairies installed:
 	- convolutional neural network
     
 - `ml_models.py` : trains and validates our classifiers and prints their accuracy on the validation set.
-\nYou should run this file as follows: ```$ python ml_models.py 'model_name'``` 
-\nwhere 'model_name' can be one of the following:
-	- baseline: for a Naive Bayes classifier that uses Count Vectorization
-	- bayes: for a Naive Bayes classifier with hinge loss that uses TF-IDF Vectorization
-	- sgd: for a [Stochastic Gradient Descent Classifier](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDClassifier.html) that uses TF-IDF Vectorization
-	- svm: for a [Support Vector Classification](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html) that uses TF-IDF Vectorization
-	- logistic: for a regularized logistic regression that uses TF-IDF Vectorization
+You should run this file as follows: ```$ python ml_models.py model_name``` where `model_name` can be one of the following:
+	- baseline: for a [Naive Bayes classifier](https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html) that uses Count Vectorization
+	- bayes: for a [Naive Bayes classifier](https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html) with hinge loss that uses TF-IDF vectorization
+	- sgd: for a [Stochastic Gradient Descent Classifier](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDClassifier.html)
+	- svm: for a [Support Vector Classification](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)
+	- logistic: for a [regularized logistic regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
     
 - `create_embeddings.py` : creates word2vec vectors from the dataset
 
@@ -69,7 +68,7 @@ In order to run the project, you need the following librairies installed:
 
 
 
-## Run
+## Reproducibility
 
 To obtain the same predictions we used for the AIcrowd submission, run the python script `run.py` . It will produce a file `submissions.csv` that can be submitted on the web page of the challenge.
 
