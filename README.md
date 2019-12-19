@@ -10,7 +10,9 @@ Zeineb Sahnoun  zeineb.sahnoun@epfl.ch
 
 ## Introduction
 
-This project is part of the course Machine Learning at EPFL. It is part of a challenge hosted on AIcrowd ( [https://www.aicrowd.com/challenges/epfl-ml-text-classification-2019](https://www.aicrowd.com/challenges/epfl-ml-text-classification-2019 )  ) . Given two datasets (one with negative tweets and the other with positive tweets) we had to apply machine learning techniques to predict the sentiments of the test dataset.
+This project is part of the Machine Learning course at EPFL. It is part of a challenge hosted on AIcrowd ( [https://www.aicrowd.com/challenges/epfl-ml-text-classification-2019](https://www.aicrowd.com/challenges/epfl-ml-text-classification-2019 )  ) . 
+
+Given a training set of tweets labeled as expressing a happy feeling versus a sad feeling, we use NLP techniques as well as machine learning models to predict the sentiments of an unlabeled test dataset.
 
 ## Dataset Information
 To obtain the same results than us, you need to download the following files from [https://www.aicrowd.com/challenges/epfl-ml-text-classification-2019/dataset_files](https://www.aicrowd.com/challenges/epfl-ml-text-classification-2019/dataset_files)  :
